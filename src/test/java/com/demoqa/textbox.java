@@ -17,7 +17,7 @@ public class textbox {
     }
 
     @Test
-    void successFormTest() {
+    void successTextBoxTest() {
         open("/text-box");
 
         $("[id=userName]").setValue("Smith");
