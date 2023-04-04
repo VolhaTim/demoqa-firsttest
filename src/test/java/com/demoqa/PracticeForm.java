@@ -15,14 +15,14 @@ public class PracticeForm {
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "3840x2160";
+        Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
 }
     @Test
     void successPracticeFormTest(){
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('#footer').remove()");
+        executeJavaScript("$('footer').remove()");
 
         $("#firstName").setValue("Tom");
         $("#lastName").setValue("Johnson");
@@ -46,6 +46,5 @@ public class PracticeForm {
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Tom"), text("aa@aaa.com"), text("1234567890"));
-
         }
 }
