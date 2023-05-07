@@ -16,27 +16,33 @@ public class PracticeFormWithObjectsTests extends TestBase{
     @Test
     void successPracticeFormTest(){
 
-        practiceFormObjects.OpenPage()
-                           .RemoveFooter()
-                           .SetFirstName("Alex")
-                           .SetLastName("Johnson")
-                           .SetUserEmail("aa@aaa.com")
-                           .SetGender("Male")
-                           .SetUserNumber("1234567890")
-                           .SetBirthDate("04","April","1990")
-                           .SetSubjectsInput("Chemistry")
-                           .SetHobbies("Reading")
-                           .UploadPicture("src/test/resources/images/.png")
-                           .SetAddress("street 1")
-                           .SetState("NCR")
-                           .SetCity("Delhi")
-                           .ClickSubmit();
+        practiceFormObjects.openPage()
+                           .removeFooter()
+                           .setFirstName("Alex")
+                           .setLastName("Johnson")
+                           .setUserEmail("aa@aaa.com")
+                           .setGender("Male")
+                           .setUserNumber("1234567890")
+                           .setBirthDate("04","April","1990")
+                           .setSubjectsInput("Chemistry")
+                           .setHobbies("Reading")
+                           .uploadPicture("src/test/resources/images/.png")
+                           .setAddress("street 1")
+                           .setState("NCR")
+                           .setCity("Delhi")
+                           .clickSubmit();
 
-        practiceFormObjects.VerifyRegistrationModalAppear()
-                .VerifyResult ("Student Name", "Alex")
-                .VerifyResult ("Student Email","aa@aaa.com")
-                .VerifyResult ("Mobile","1234567890");
-
+        practiceFormObjects.verifyRegistrationModalAppear()
+                .verifyResult ("Student Name", "Alex Johnson")
+                .verifyResult ("Student Email","aa@aaa.com")
+                .verifyResult ("Gender","Male")
+                .verifyResult ("Mobile","1234567890")
+                .verifyResult ("Date of Birth","04 April,1990")
+                .verifyResult ("Subjects","Chemistry")
+                .verifyResult("Hobbies","Reading")
+                .verifyResult("Picture",".png")
+                .verifyResult("Address","street 1")
+                .verifyResult("State and City","NCR Delhi");
     }
 }
 
