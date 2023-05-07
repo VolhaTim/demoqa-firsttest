@@ -1,9 +1,8 @@
 package com.demoqa.pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
-import com.demoqa.pages.components.ResultsModal;
+import com.demoqa.pages.components.ResultsModalComponent;
 
 import java.io.File;
 
@@ -15,7 +14,7 @@ import static java.lang.String.format;
 
 public class PracticeFormObjects {
     CalendarComponent calendarComponent = new CalendarComponent();
-    ResultsModal resultsModal = new ResultsModal();
+    ResultsModalComponent resultsModal = new ResultsModalComponent();
     //Selenide Elements
 
     SelenideElement firstNameInput = $("#firstName");
@@ -38,76 +37,76 @@ public class PracticeFormObjects {
 
 
     //Actions
-    public PracticeFormObjects OpenPage () {
+    public PracticeFormObjects openPage () {
         open("/automation-practice-form");
         return this;
     }
-    public PracticeFormObjects RemoveFooter () {
+    public PracticeFormObjects removeFooter () {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
-   public PracticeFormObjects SetFirstName (String value) {
+   public PracticeFormObjects setFirstName (String value) {
         firstNameInput.setValue(value);
         return this;
     }
 
-    public PracticeFormObjects SetLastName (String value) {
+    public PracticeFormObjects setLastName (String value) {
         lastNameInput.setValue(value);
         return this;
     }
-    public PracticeFormObjects SetUserEmail (String value) {
+    public PracticeFormObjects setUserEmail (String value) {
         userEmailInput.setValue(value);
         return this;
     }
-    public PracticeFormObjects SetGender (String value) {
+    public PracticeFormObjects setGender (String value) {
         gender.$(byText(value)).click();
         return this;
     }
-    public PracticeFormObjects SetUserNumber (String value) {
+    public PracticeFormObjects setUserNumber (String value) {
         userNumberInput.setValue(value);
         return this;
     }
-    public PracticeFormObjects SetBirthDate(String day, String month, String year) {
-        calendarComponent.SetDate(day, month, year);
+    public PracticeFormObjects setBirthDate(String day, String month, String year) {
+        calendarComponent.setDate(day, month, year);
         return this;
     }
-    public PracticeFormObjects SetSubjectsInput (String value) {
+    public PracticeFormObjects setSubjectsInput (String value) {
         subjectsInput.setValue(value).pressEnter();
         return this;
     }
-    public PracticeFormObjects SetHobbies (String value) {
+    public PracticeFormObjects setHobbies (String value) {
         hobbies.$(byText(value)).click();
         return this;
     }
-    public PracticeFormObjects UploadPicture (String value) {
+    public PracticeFormObjects uploadPicture (String value) {
         picture.uploadFile(new File(value));
         return this;
     }
-    public PracticeFormObjects SetAddress (String value) {
+    public PracticeFormObjects setAddress (String value) {
         addressInput.setValue(value);
         return this;
     }
-    public PracticeFormObjects SetState (String value) {
+    public PracticeFormObjects setState (String value) {
         state.click();
         stateAndCityWrapper.$(byText(value)).click();
         return this;
     }
-        public PracticeFormObjects SetCity (String value) {
+        public PracticeFormObjects setCity (String value) {
             city.click();
             stateAndCityWrapper.$(byText(value)).click();
             return this;
     }
-    public void ClickSubmit () {
+    public void clickSubmit () {
         submit.click();
     }
 
-    public PracticeFormObjects VerifyRegistrationModalAppear () {
-       resultsModal.VerifyModalAppear();
+    public PracticeFormObjects verifyRegistrationModalAppear () {
+       resultsModal.verifyModalAppear();
     return this;
     }
-    public PracticeFormObjects VerifyResult (String key, String value) {
-     resultsModal.VerifyResult(key, value);
+    public PracticeFormObjects verifyResult (String key, String value) {
+     resultsModal.verifyResult(key, value);
       return this;
     }
 }
