@@ -67,8 +67,8 @@ public class PracticeFormObjects {
         userNumberInput.setValue(value);
         return this;
     }
-    public PracticeFormObjects setBirthDate(String day, String month, String year) {
-        calendarComponent.setDate(day, month, year);
+    public PracticeFormObjects setBirthDate(String[] birthdayDate) {
+        calendarComponent.setDate(birthdayDate[0], birthdayDate[1], birthdayDate[2]);
         return this;
     }
     public PracticeFormObjects setSubjectsInput (String value) {
@@ -92,10 +92,10 @@ public class PracticeFormObjects {
         stateAndCityWrapper.$(byText(value)).click();
         return this;
     }
-        public PracticeFormObjects setCity (String value) {
-            city.click();
-            stateAndCityWrapper.$(byText(value)).click();
-            return this;
+    public PracticeFormObjects setCity (String value) {
+        city.click();
+        stateAndCityWrapper.$(byText(value)).click();
+        return this;
     }
     public void clickSubmit () {
         submit.click();

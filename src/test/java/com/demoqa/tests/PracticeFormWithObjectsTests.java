@@ -1,48 +1,54 @@
 package com.demoqa.tests;
 
-import com.demoqa.pages.PracticeFormObjects;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PracticeFormWithObjectsTests extends TestBase{
 
     @Test
     void successPracticeFormTest(){
+        JavaFakerData javaFakerData = new JavaFakerData();
+
+        String firstName = javaFakerData.getFirstName(),
+               lastName = javaFakerData.getLastName(),
+               userEmail = javaFakerData.getEmail(),
+               gender = javaFakerData.getGender(),
+               userNumber = javaFakerData.getMobileNumber(),
+               subjects = javaFakerData.getSubject(),
+               hobbies = javaFakerData.getHobby(),
+               address = javaFakerData.getAddress(),
+               state = javaFakerData.getState(),
+               city = javaFakerData.getCity(state);
+        String[] birthday = javaFakerData.getBirthDate();
 
         practiceFormObjects.openPage()
                            .removeFooter()
-                           .setFirstName("Alex")
-                           .setLastName("Johnson")
-                           .setUserEmail("aa@aaa.com")
-                           .setGender("Male")
-                           .setUserNumber("1234567890")
-                           .setBirthDate("04","April","1990")
-                           .setSubjectsInput("Chemistry")
-                           .setHobbies("Reading")
+                           .setFirstName(firstName)
+                           .setLastName(lastName)
+                           .setUserEmail(userEmail)
+                           .setGender(gender)
+                           .setUserNumber(userNumber)
+                           .setBirthDate(birthday)
+                           .setSubjectsInput(subjects)
+                           .setHobbies(hobbies)
                            .uploadPicture("src/test/resources/images/.png")
-                           .setAddress("street 1")
-                           .setState("NCR")
-                           .setCity("Delhi")
+                           .setAddress(address)
+                           .setState(state)
+                           .setCity(city)
                            .clickSubmit();
 
         practiceFormObjects.verifyRegistrationModalAppear()
-                .verifyResult ("Student Name", "Alex Johnson")
-                .verifyResult ("Student Email","aa@aaa.com")
-                .verifyResult ("Gender","Male")
-                .verifyResult ("Mobile","1234567890")
+                .verifyResult ("Student Name", firstName + " " + lastName)
+                .verifyResult ("Student Email",userEmail)
+                .verifyResult ("Gender",gender)
+                .verifyResult ("Mobile",userNumber)
                 .verifyResult ("Date of Birth","04 April,1990")
-                .verifyResult ("Subjects","Chemistry")
-                .verifyResult("Hobbies","Reading")
+                .verifyResult ("Subjects",subjects)
+                .verifyResult("Hobbies",hobbies)
                 .verifyResult("Picture",".png")
-                .verifyResult("Address","street 1")
-                .verifyResult("State and City","NCR Delhi");
+                .verifyResult("Address",address)
+                .verifyResult("State and City",state + " " + city);
     }
 }
 
