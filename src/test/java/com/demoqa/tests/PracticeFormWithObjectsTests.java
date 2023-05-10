@@ -19,7 +19,8 @@ public class PracticeFormWithObjectsTests extends TestBase{
                hobbies = javaFakerData.getHobby(),
                address = javaFakerData.getAddress(),
                state = javaFakerData.getState(),
-               city = javaFakerData.getCity(state);
+               city = javaFakerData.getCity(state),
+               picture = "src/test/resources/images/.png";
         String[] birthday = javaFakerData.getBirthDate();
 
         practiceFormObjects.openPage()
@@ -32,7 +33,7 @@ public class PracticeFormWithObjectsTests extends TestBase{
                            .setBirthDate(birthday)
                            .setSubjectsInput(subjects)
                            .setHobbies(hobbies)
-                           .uploadPicture("src/test/resources/images/.png")
+                           .uploadPicture(picture)
                            .setAddress(address)
                            .setState(state)
                            .setCity(city)
@@ -43,7 +44,7 @@ public class PracticeFormWithObjectsTests extends TestBase{
                 .verifyResult ("Student Email",userEmail)
                 .verifyResult ("Gender",gender)
                 .verifyResult ("Mobile",userNumber)
-                .verifyResult ("Date of Birth","04 April,1990")
+                .verifyResult ("Date of Birth", birthday[0] + " " + birthday[1] + "," + birthday[2])
                 .verifyResult ("Subjects",subjects)
                 .verifyResult("Hobbies",hobbies)
                 .verifyResult("Picture",".png")
