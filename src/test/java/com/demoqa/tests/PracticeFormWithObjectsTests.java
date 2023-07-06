@@ -8,7 +8,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class PracticeFormWithObjectsTests extends TestBase{
 
     @Test
-    @Tag("remote")
     void successPracticeFormTest(){
         JavaFakerData javaFakerData = new JavaFakerData();
 
