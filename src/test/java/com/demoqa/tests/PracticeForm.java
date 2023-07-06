@@ -23,7 +23,7 @@ public class PracticeForm {
 }
     @Test
     @Tag("remote")
-    @DisplayName("Successfull registration test")
+    @DisplayName("Successful registration")
     void successPracticeFormTest(){
 
         step ("Open form", () -> {
