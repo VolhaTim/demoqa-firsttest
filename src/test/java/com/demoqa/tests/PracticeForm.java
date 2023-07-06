@@ -23,6 +23,7 @@ public class PracticeForm extends TestBase{
 }
     @Test
     @Tag("remote")
+    @DisplayName("Successful registration")
     void successPracticeFormTest(){
 
         step ("Open form", () -> {
