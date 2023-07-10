@@ -2,6 +2,7 @@ package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.demoqa.helpers.Attach;
 import com.demoqa.pages.PracticeFormObjects;
 import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -33,6 +34,14 @@ public class TestBase {
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 
     }
