@@ -17,7 +17,7 @@ import static io.qameta.allure.Allure.step;
 public class PracticeForm extends TestBase{
     @Test
     @Tag("remote")
-    @DisplayName("Successful registration")
+    @DisplayName("Successful registration1")
     void successPracticeFormTest(){
 
         step ("Open form", () -> {
